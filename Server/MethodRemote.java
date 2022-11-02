@@ -1,5 +1,6 @@
 import java.rmi.*;
 import java.rmi.server.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MethodRemote extends UnicastRemoteObject implements Method{
@@ -8,7 +9,14 @@ public class MethodRemote extends UnicastRemoteObject implements Method{
 		super();
 	}
 
-	public int action(int x,int y){
-		return x+y;
+	public String action(String s){
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		if (s.equals("time")){
+			return formatter.format(date);
+		}
+		else {
+			return s.toUpperCase();
+		}
 	}
 }
